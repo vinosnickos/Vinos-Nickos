@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vinos Nicko's - Bebidas Ancestrales y Afrodisíacas Colombianas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variables y estilos base */
+        :root {
+            --primary: #8B4513;
+            --primary-light: #A0522D;
+            --primary-dark: #654321;
+            --secondary: #C19A6B;
+            --accent: #8B0000;
+            --text: #2C1810;
+            --text-light: #5D4037;
+            --background: #F5F5DC;
+            --white: #FFF;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header y Navegación */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 50px;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 20px;
+            font-size: 1.2rem;
+        }
+
+        .nav-icons a {
+            color: var(--text);
+            transition: var(--transition);
+        }
+
+        .nav-icons a:hover {
+            color: var(--primary);
+        }
+
+        .cart-count {
+            background-color: var(--accent);
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: -5px;
+            right: -5px;
+        }
+
+        .cart-icon {
+            position: relative;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            background-color: var(--accent);
+        }
+
+        .btn-secondary:hover {
+            background-color: #6B0000;
+        }
+
+        /* Sección de productos */
+        .section-title {
+            text-align: center;
+            margin: 60px 0 40px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .category-btn {
+            background-color: var(--white);
+            border: 1px solid #ddd;
+            padding: 8px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .category-btn.active, .category-btn:hover {
+            background-color: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .product-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--text);
+        }
+
+        .product-description {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .product-benefits {
+            font-size: 0.8rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-btn {
+            background-color: #f0f0f0;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .quantity-btn:hover {
+            background-color: #e0e0e0;
+        }
+
+        .quantity {
+            font-weight: 600;
+        }
+
+        /* Sección de beneficios medicinales */
+        .benefits-section {
+            background-color: var(--white);
+            padding: 80px 0;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .benefit-card {
+            background-color: var(--background);
+            padding: 30px 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        /* Carrito de compras */
+        .cart-modal {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 100%;
+            max-width: 400px;
+            height: 100vh;
+            background-color: var(--white);
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            z-index: 1100;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .cart-modal.active {
+            right: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+
+        .cart-items {
+            margin-bottom: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-item-img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .cart-item-price {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .cart-item-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .remove-item {
+            color: #f44336;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 20px 0;
+            padding-top: 20px;
+            border-top: 2px solid #eee;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.1rem;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1050;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Sección de información */
+        .info-section {
+            background-color: var(--white);
+            padding: 80px 0;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .info-card {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            background-color: var(--background);
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .info-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary);
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            nav {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                box-shadow: var(--shadow);
+                padding: 20px;
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition);
+            }
+
+            nav.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .hero {
+                padding: 80px 0;
+            }
+
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+
+            .cart-modal {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .header-container {
+                flex-wrap: wrap;
+            }
+
+            .logo h1 {
+                font-size: 1.3rem;
+            }
+
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.5rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-wine-bottle" style="font-size: 2rem; color: var(--primary);"></i>
+                <h1>Vinos Nicko's</h1>
+            </div>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#vinos">Nuestros Vinos</a></li>
+                    <li><a href="#dulces">Dulces Tradicionales</a></li>
+                    <li><a href="#beneficios">Beneficios</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+            
+            <div class="nav-icons">
+                <a href="#"><i class="fas fa-search"></i></a>
+                <a href="#"><i class="fas fa-user"></i></a>
+                <a href="#" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <h2>Bebidas Ancestrales y Afrodisíacas Colombianas</h2>
+            <p>Descubre el poder curativo y revitalizante de nuestras bebidas tradicionales, elaboradas con frutos autóctonos de Colombia siguiendo recetas ancestrales.</p>
+            <a href="#vinos" class="btn">Explorar Productos</a>
+        </div>
+    </section>
+
+    <!-- Sección de Vinos -->
+    <section id="vinos">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestros Vinos y Bebidas Ancestrales</h2>
+            </div>
+            
+            <div class="categories">
+                <button class="category-btn active" data-category="all">Todos</button>
+                <button class="category-btn" data-category="vinos">Vinos</button>
+                <button class="category-btn" data-category="licores">Licores</button>
+                <button class="category-btn" data-category="medicinales">Medicinales</button>
+            </div>
+            
+            <div class="products-grid" id="products-container">
+                <!-- Los productos se cargarán dinámicamente con JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Dulces -->
+    <section id="dulces">
+        <div class="container">
+            <div class="section-title">
+                <h2>Dulces Tradicionales - Cocadas</h2>
+            </div>
+            
+            <div class="products-grid" id="sweets-container">
+                <!-- Los dulces se cargarán dinámicamente con JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Beneficios Medicinales -->
+    <section class="benefits-section" id="beneficios">
+        <div class="container">
+            <div class="section-title">
+                <h2>Beneficios Medicinales</h2>
+            </div>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>Salud Cardiovascular</h3>
+                    <p>Control de presión arterial, colesterol y prevención de enfermedades del corazón.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-dna"></i>
+                    </div>
+                    <h3>Prevención del Cáncer</h3>
+                    <p>Propiedades antioxidantes que ayudan a prevenir diferentes tipos de cáncer.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-venus-mars"></i>
+                    </div>
+                    <h3>Vitalidad Sexual</h3>
+                    <p>Combate la impotencia sexual y la frialdad, aumentando el deseo y la energía.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Salud Mental</h3>
+                    <p>Reduce el estrés, combate el insomnio y mejora el bienestar emocional.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-pills"></i>
+                    </div>
+                    <h3>Digestión y Metabolismo</h3>
+                    <p>Mejora la digestión, controla la diabetes y elimina parásitos intestinales.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-female"></i>
+                    </div>
+                    <h3>Salud Femenina</h3>
+                    <p>Combate quistes, miomas y problemas ginecológicos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Información -->
+    <section class="info-section" id="nosotros">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestra Tradición</h2>
+            </div>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <h3>Recetas Ancestrales</h3>
+                    <p>Nuestras bebidas se elaboran siguiendo recetas tradicionales transmitidas por generaciones, respetando los saberes ancestrales colombianos.</p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Ingredientes Naturales</h3>
+                    <p>Utilizamos únicamente frutos autóctonos de Colombia como lulo, marañón, borojó, corozo y pipilongo, sin conservantes ni químicos.</p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3>Elaboración Artesanal</h3>
+                    <p>Cada producto es elaborado cuidadosamente de forma artesanal, garantizando su calidad y propiedades medicinales.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Carrito de Compras -->
+    <div class="overlay" id="overlay"></div>
+    
+    <div class="cart-modal" id="cart-modal">
+        <div class="cart-header">
+            <h3>Tu Carrito</h3>
+            <button class="close-cart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="cart-items" id="cart-items">
+            <!-- Los productos del carrito se cargarán dinámicamente -->
+        </div>
+        
+        <div class="cart-total">
+            <span>Total:</span>
+            <span id="cart-total">$0</span>
+        </div>
+        
+        <button class="btn checkout-btn">Proceder al Pago</button>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contacto">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Vinos Nicko's</h3>
+                    <p>Bebidas ancestrales y afrodisíacas colombianas, elaboradas con frutos autóctonos y recetas tradicionales para tu salud y bienestar.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#vinos">Nuestros Vinos</a></li>
+                        <li><a href="#dulces">Dulces Tradicionales</a></li>
+                        <li><a href="#beneficios">Beneficios</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contacto</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> Calle </li>
+                        <li><i class="fas fa-phone"></i> +57 315 9288778</li>
+                        <li><i class="fas fa-envelope"></i> vinosnickos@gmail.com</li>
+                        <li><i class="fab fa-whatsapp"></i> +57 314 8662497</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Métodos de Pago</h3>
+                    <p>Aceptamos todos los métodos de pago:</p>
+                    <div style="margin-top: 15px; display: flex; gap: 10px; flex-wrap: wrap;">
+                        <i class="fab fa-cc-visa" style="font-size: 2rem;"></i>
+                        <i class="fab fa-cc-mastercard" style="font-size: 2rem;"></i>
+                        <i class="fab fa-cc-amex" style="font-size: 2rem;"></i>
+                        <i class="fas fa-money-bill-wave" style="font-size: 2rem;"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Vinos Nicko's. Todos los derechos reservados. | Bebidas con propiedades medicinales - Consumir con moderación</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Datos de productos - Vinos y Bebidas
+        const products = [
+            {
+                id: 1,
+                name: "Vino de Lulo",
+                category: "vinos",
+                price: 35000,
+                image: "fotos/vino de lulo.jpg",
+                description: "Vino ancestral elaborado con lulo colombiano, de sabor único y propiedades revitalizantes.",
+                benefits: "Rico en vitamina C, combate el estrés y mejora la digestión."
+            },
+            {
+                id: 2,
+                name: "Vino de Marañón",
+                category: "vinos",
+                price: 38000,
+                image: "fotos/vino de marañon.jpg",
+                description: "Elaborado con marañón, fruto tropical con propiedades afrodisíacas y energéticas.",
+                benefits: "Aumenta la energía, combate la anemia y mejora la circulación."
+            },
+            {
+                id: 3,
+                name: "Vino de Pipilongo",
+                category: "vinos",
+                price: 42000,
+                image: "fotos/vino de pipilongo.jpg",
+                description: "Vino con pipilongo, conocido por sus propiedades afrodisíacas y estimulantes.",
+                benefits: "Estimulante sexual natural, combate la impotencia y aumenta la libido."
+            },
+            {
+                id: 4,
+                name: "Arrechón de Borojó",
+                category: "licores",
+                price: 45000,
+                image: "fotos/arrechon de borojo.jpg",
+                description: "Licor afrodisíaco por excelencia, elaborado con borojó y especias ancestrales.",
+                benefits: "Potente afrodisíaco, aumenta la energía y vitalidad sexual."
+            },
+            {
+                id: 5,
+                name: "Coctel de Café",
+                category: "licores",
+                price: 32000,
+                image: "fotos/coctel de cafe.jpg",
+                description: "Delicioso coctel a base de café colombiano con un toque de licor ancestral.",
+                benefits: "Estimulante natural, combate el insomnio y mejora el estado de ánimo."
+            },
+            {
+                id: 6,
+                name: "Viche Puro",
+                category: "licores",
+                price: 28000,
+                image: "fotos/viche puro.jpg",
+                description: "Bebida ancestral del Pacífico colombiano, destilada de manera artesanal.",
+                benefits: "Propiedades medicinales, alivia dolores y combate el pasmo."
+            },
+            {
+                id: 7,
+                name: "Ron de Borojó",
+                category: "licores",
+                price: 48000,
+                image: "fotos/ron de borojo.jpg",
+                description: "Ron infusionado con borojó, combinación perfecta de sabor y propiedades medicinales.",
+                benefits: "Afrodisíaco, energizante y con propiedades antioxidantes."
+            },
+            {
+                id: 8,
+                name: "Vino de Borojó",
+                category: "vinos",
+                price: 40000,
+                image: "fotos/vino de borojo.jpg",
+                description: "Vino elaborado con borojó, fruto conocido como 'viagra natural' por sus propiedades.",
+                benefits: "Aumenta la libido, combate la impotencia y mejora la circulación."
+            },
+            {
+                id: 9,
+                name: "Vino de Corozo",
+                category: "vinos",
+                price: 36000,
+                image: "fotos/vino de corozo.jpg",
+                description: "Vino ancestral de corozo, palma nativa con excelentes propiedades nutricionales.",
+                benefits: "Rico en antioxidantes, combate el colesterol y mejora la salud cardiovascular."
+            },
+            {
+                id: 10,
+                name: "Extracto de Cancerina",
+                category: "medicinales",
+                price: 52000,
+                image: "fotos/extracto de cancerina.jpg",
+                description: "Extracto puro de cancerina, planta medicinal con propiedades antitumorales.",
+                benefits: "Prevención y tratamiento complementario contra el cáncer, propiedades depurativas."
+            },
+            {
+                id: 11,
+                name: "Curada Ancestral",
+                category: "medicinales",
+                price: 38000,
+                image: "fotos/curada.jpg",
+                description: "Bebida medicinal tradicional para tratar múltiples dolencias y malestares.",
+                benefits: "Alivia dolores, combate parásitos intestinales y mejora la digestión."
+            },
+            {
+                id: 12,
+                name: "Toma Seca",
+                category: "medicinales",
+                price: 35000,
+                image: "fotos/toma seca.jpg",
+                description: "Preparado medicinal para tratar problemas respiratorios y fortalecer el sistema inmunológico.",
+                benefits: "Combate gripes, resfriados y fortalece las vías respiratorias."
+            }
+        ];
+
+        // Datos de dulces - Cocadas
+        const sweets = [
+            {
+                id: 101,
+                name: "Cocada de Leche",
+                category: "dulces",
+                price: 8000,
+                image: "fotos/Leche.jpg",
+                description: "Deliciosa cocada tradicional con leche, dulce y suave.",
+                benefits: "Fuente de energía natural, rica en calcio y nutrientes."
+            },
+            {
+                id: 102,
+                name: "Cocada de Zanahoria",
+                category: "dulces",
+                price: 8500,
+                image: "fotos/zanahoria.jpg",
+                description: "Cocada con zanahoria, combinación perfecta de dulce y nutritivo.",
+                benefits: "Rica en vitamina A, mejora la visión y la salud de la piel."
+            },
+            {
+                id: 103,
+                name: "Cocada de Aguacate",
+                category: "dulces",
+                price: 9000,
+                image: "fotos/aguacate.jpg",
+                description: "Innovadora cocada con aguacate, cremosa y deliciosa.",
+                benefits: "Grasas saludables, beneficiosa para el corazón y la piel."
+            },
+            {
+                id: 104,
+                name: "Cocada de Papaya",
+                category: "dulces",
+                price: 8200,
+                image: "fotos/papaya.jpg",
+                description: "Cocada con papaya, fruta tropical con excelentes propiedades digestivas.",
+                benefits: "Mejora la digestión, rica en enzimas y vitamina C."
+            },
+            {
+                id: 105,
+                name: "Cocada de Borojó",
+                category: "dulces",
+                price: 9500,
+                image: "fotos/borojo.jpg",
+                description: "Cocada energética con borojó, fruto afrodisíaco por excelencia.",
+                benefits: "Aumenta la energía y vitalidad, propiedades afrodisíacas."
+            },
+            {
+                id: 106,
+                name: "Cocada de Guayaba",
+                category: "dulces",
+                price: 8300,
+                image: "fotos/guayaba.jpg",
+                description: "Cocada con guayaba, fruta rica en vitamina C y antioxidantes.",
+                benefits: "Fortalece el sistema inmunológico, rica en antioxidantes."
+            },
+            {
+                id: 107,
+                name: "Cocada Tradicional",
+                category: "dulces",
+                price: 7500,
+                image: "fotos/tradicionales.jpg",
+                description: "La cocada clásica, tal como se prepara tradicionalmente en la Costa Caribe.",
+                benefits: "Energética, fuente de carbohidratos naturales."
+            },
+            {
+                id: 108,
+                name: "Cocada de Lulo",
+                category: "dulces",
+                price: 8800,
+                image: "fotos/lulo.jpg",
+                description: "Cocada con lulo, fruta ácida y refrescante típica de Colombia.",
+                benefits: "Rica en vitamina C, mejora la digestión y combate el estrés."
+            },
+            {
+                id: 109,
+                name: "Cocada de Marañón",
+                category: "dulces",
+                price: 9200,
+                image: "fotos/Marañon.jpg",
+                description: "Cocada con marañón, fruto energético y nutritivo.",
+                benefits: "Aumenta la energía, combate la anemia y mejora la circulación."
+            }
+        ];
+
+        // Estado de la aplicación
+        let cart = [];
+        let currentCategory = 'all';
+
+        // Elementos del DOM
+        const productsContainer = document.getElementById('products-container');
+        const sweetsContainer = document.getElementById('sweets-container');
+        const cartItems = document.getElementById('cart-items');
+        const cartTotal = document.getElementById('cart-total');
+        const cartCount = document.querySelector('.cart-count');
+        const cartModal = document.getElementById('cart-modal');
+        const overlay = document.getElementById('overlay');
+        const closeCartBtn = document.querySelector('.close-cart');
+        const cartIcon = document.querySelector('.cart-icon');
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav');
+
+        // Inicializar la aplicación
+        function init() {
+            renderProducts();
+            renderSweets();
+            setupEventListeners();
+            updateCart();
+        }
+
+        // Renderizar productos
+        function renderProducts() {
+            productsContainer.innerHTML = '';
+            
+            const filteredProducts = currentCategory === 'all' 
+                ? products 
+                : products.filter(product => product.category === currentCategory);
+            
+            filteredProducts.forEach(product => {
+                const productElement = document.createElement('div');
+                productElement.className = 'product-card';
+                productElement.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">${product.name}</h3>
+                        <p class="product-description">${product.description}</p>
+                        <p class="product-benefits">${product.benefits}</p>
+                        <div class="product-price">$${product.price.toLocaleString()}</div>
+                        <div class="product-actions">
+                            <div class="quantity-selector">
+                                <button class="quantity-btn minus" data-id="${product.id}">-</button>
+                                <span class="quantity" data-id="${product.id}">0</span>
+                                <button class="quantity-btn plus" data-id="${product.id}">+</button>
+                            </div>
+                            <button class="btn add-to-cart" data-id="${product.id}">Agregar</button>
+                        </div>
+                    </div>
+                `;
+                productsContainer.appendChild(productElement);
+            });
+        }
+
+        // Renderizar dulces
+        function renderSweets() {
+            sweetsContainer.innerHTML = '';
+            
+            sweets.forEach(sweet => {
+                const sweetElement = document.createElement('div');
+                sweetElement.className = 'product-card';
+                sweetElement.innerHTML = `
+                    <img src="${sweet.image}" alt="${sweet.name}" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">${sweet.name}</h3>
+                        <p class="product-description">${sweet.description}</p>
+                        <p class="product-benefits">${sweet.benefits}</p>
+                        <div class="product-price">$${sweet.price.toLocaleString()}</div>
+                        <div class="product-actions">
+                            <div class="quantity-selector">
+                                <button class="quantity-btn minus" data-id="${sweet.id}">-</button>
+                                <span class="quantity" data-id="${sweet.id}">0</span>
+                                <button class="quantity-btn plus" data-id="${sweet.id}">+</button>
+                            </div>
+                            <button class="btn add-to-cart" data-id="${sweet.id}">Agregar</button>
+                        </div>
+                    </div>
+                `;
+                sweetsContainer.appendChild(sweetElement);
+            });
+        }
+
+        // Configurar event listeners
+        function setupEventListeners() {
+            // Categorías
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    currentCategory = button.dataset.category;
+                    renderProducts();
+                });
+            });
+            
+            // Carrito
+            cartIcon.addEventListener('click', openCart);
+            closeCartBtn.addEventListener('click', closeCart);
+            overlay.addEventListener('click', closeCart);
+            
+            // Menú móvil
+            mobileMenuBtn.addEventListener('click', () => {
+                nav.classList.toggle('active');
+            });
+            
+            // Delegación de eventos para productos
+            productsContainer.addEventListener('click', handleProductClick);
+            sweetsContainer.addEventListener('click', handleProductClick);
+            cartItems.addEventListener('click', handleCartItemClick);
+        }
+
+        // Manejar clics en productos
+        function handleProductClick(e) {
+            const target = e.target;
+            const id = parseInt(target.dataset.id);
+            
+            if (target.classList.contains('add-to-cart')) {
+                addToCart(id);
+            } else if (target.classList.contains('plus')) {
+                increaseQuantity(id);
+            } else if (target.classList.contains('minus')) {
+                decreaseQuantity(id);
+            }
+        }
+
+        // Manejar clics en elementos del carrito
+        function handleCartItemClick(e) {
+            if (e.target.classList.contains('remove-item')) {
+                const id = parseInt(e.target.dataset.id);
+                removeFromCart(id);
+            }
+        }
+
+        // Funciones del carrito
+        function addToCart(productId) {
+            let product;
+            
+            // Buscar en productos
+            product = products.find(p => p.id === productId);
+            
+            // Si no se encuentra en productos, buscar en dulces
+            if (!product) {
+                product = sweets.find(s => s.id === productId);
+            }
+            
+            if (!product) return;
+            
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    ...product,
+                    quantity: 1
+                });
+            }
+            
+            updateCart();
+            updateProductQuantityDisplay(productId);
+        }
+
+        function increaseQuantity(productId) {
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity += 1;
+                updateCart();
+                updateProductQuantityDisplay(productId);
+            }
+        }
+
+        function decreaseQuantity(productId) {
+            const itemIndex = cart.findIndex(item => item.id === productId);
+            if (itemIndex !== -1) {
+                if (cart[itemIndex].quantity > 1) {
+                    cart[itemIndex].quantity -= 1;
+                } else {
+                    cart.splice(itemIndex, 1);
+                }
+                updateCart();
+                updateProductQuantityDisplay(productId);
+            }
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCart();
+            updateProductQuantityDisplay(productId);
+        }
+
+        function updateCart() {
+            // Actualizar contador del carrito
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            
+            // Actualizar items del carrito
+            cartItems.innerHTML = '';
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p>Tu carrito está vacío</p>';
+                cartTotal.textContent = '$0';
+                return;
+            }
+            
+            let total = 0;
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                
+                const cartItemElement = document.createElement('div');
+                cartItemElement.className = 'cart-item';
+                cartItemElement.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" class="cart-item-img">
+                    <div class="cart-item-details">
+                        <h4 class="cart-item-title">${item.name}</h4>
+                        <div class="cart-item-price">$${item.price.toLocaleString()} x ${item.quantity}</div>
+                        <div class="cart-item-actions">
+                            <button class="remove-item" data-id="${item.id}">Eliminar</button>
+                        </div>
+                    </div>
+                `;
+                cartItems.appendChild(cartItemElement);
+            });
+            
+            cartTotal.textContent = `$${total.toLocaleString()}`;
+        }
+
+        function updateProductQuantityDisplay(productId) {
+            const quantityElement = document.querySelector(`.quantity[data-id="${productId}"]`);
+            if (quantityElement) {
+                const item = cart.find(item => item.id === productId);
+                quantityElement.textContent = item ? item.quantity : '0';
+            }
+        }
+
+        function openCart() {
+            cartModal.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCart() {
+            cartModal.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Inicializar la aplicación cuando el DOM esté listo
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
