@@ -9,7 +9,7 @@
     :root {
       --primary: #8b5e34;
       --secondary: #d4a373;
-      --bg-overlay: rgba(255, 255, 255, 0.9);
+      --bg-overlay: rgba(255, 255, 255, 0.92);
       --text: #3b2f2f;
     }
     body {
@@ -17,14 +17,8 @@
       color: var(--text);
       margin: 0;
       padding: 0;
-      /* Background image placed in the fotos/ folder */
-      background-image: url('fotos/Aviso.jpg');
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-attachment: fixed;
+      background: url('aviso.jpg') no-repeat center center fixed;
       background-size: cover;
-      /* Provide a subtle fallback color while the image loads */
-      background-color: #f4f0ec;
     }
     header {
       text-align: center;
@@ -113,13 +107,13 @@
     <p>Queremos conocer tu opinión para seguir mejorando nuestra página y productos.</p>
   </header>
 
-  <form id="encuestaForm">
+  <form id="encuestaForm" action="save_survey.php" method="POST">
     <label for="gusto">¿Te gustó la página?</label>
     <select id="gusto" name="gusto" required>
       <option value="">Selecciona una opción</option>
-      <option>Sí, me encantó</option>
-      <option>Más o menos</option>
-      <option>No mucho</option>
+      <option value="Sí, me encantó">Sí, me encantó</option>
+      <option value="Más o menos">Más o menos</option>
+      <option value="No mucho">No mucho</option>
     </select>
 
     <label for="parte">¿Qué parte de la página fue la que más te llamó la atención?</label>
@@ -148,14 +142,18 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    const form = document.getElementById('encuestaForm');
-    const successMessage = document.getElementById('successMessage');
-
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      successMessage.style.display = 'block';
-      form.reset();
-    });
+    // Mostrar mensaje si la URL tiene ?saved=1 (al regresar desde save_survey.php)
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('saved') === '1') {
+        const successMessage = document.getElementById('successMessage');
+        if (successMessage) {
+          successMessage.style.display = 'block';
+          // limpiar el ?saved=1 de la URL sin recargar
+          history.replaceState(null, '', window.location.pathname);
+        }
+      }
+    })();
   </script>
 </body>
 </html>
